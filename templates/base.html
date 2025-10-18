@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SME Cyber Safety</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <h1>SME Cyber Safety</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('detect') }}">Detect Phishing</a>
+      <a href="{{ url_for('training') }}">Training</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <span>Lightweight, open-source prototype for SMEs</span>
+  </footer>
+</body>
+</html>

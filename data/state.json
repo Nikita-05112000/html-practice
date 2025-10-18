@@ -1,0 +1,14 @@
+{
+  "stats": {
+    "risky_emails_detected": 1,
+    "urls_scanned": 1,
+    "trainings_completed": 1,
+    "alerts": [
+      {
+        "type": "phishing",
+        "message": "Suspicious input detected",
+        "score": 35
+      }
+    ]
+  }
+}

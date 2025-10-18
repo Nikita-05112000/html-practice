@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Security Health Dashboard</h2>
+  <ul class="stats-list">
+    <li><strong>Risky emails detected:</strong> {{ stats.risky_emails_detected }}</li>
+    <li><strong>URLs scanned:</strong> {{ stats.urls_scanned }}</li>
+    <li><strong>Trainings completed:</strong> {{ stats.trainings_completed }}</li>
+  </ul>
+
+  <h3>Alerts</h3>
+  {% if stats.alerts and stats.alerts|length > 0 %}
+    <ul class="alerts">
+      {% for alert in stats.alerts|reverse %}
+        <li>
+          <span class="badge {{ alert.type }}">{{ alert.type }}</span>
+          {{ alert.message }} — Score {{ alert.score }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No alerts yet. You're looking good!</p>
+  {% endif %}
+</section>
+{% endblock %}

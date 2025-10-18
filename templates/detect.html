@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Phishing Detection</h2>
+  <form method="post" class="form">
+    <label for="input_text">Email text or URL</label>
+    <textarea id="input_text" name="input_text" rows="6" placeholder="Paste email content or a URL here...">{{ input_text }}</textarea>
+
+    <div class="row">
+      <label for="mode">Mode</label>
+      <select name="mode" id="mode">
+        <option value="auto">Auto</option>
+      </select>
+    </div>
+    <button class="btn" type="submit">Scan</button>
+  </form>
+
+  {% if result %}
+    <div class="result {{ result }}">
+      <h3>Result: {{ result|capitalize }} (Score: {{ score }})</h3>
+      {% if indicators %}
+      <ul>
+        {% for kind, msg in indicators %}
+          <li><strong>{{ kind }}</strong>: {{ msg }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <p>No indicators found.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
