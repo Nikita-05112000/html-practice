@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Cyber Awareness Training</h2>
+  <form method="post" class="form">
+    {% for q in quiz %}
+      <fieldset class="question">
+        <legend>{{ loop.index }}. {{ q.q }}</legend>
+        {% for opt in q.options %}
+          <label class="option">
+            <input type="radio" name="q_{{ q.id }}" value="{{ loop.index0 }}" {% if selected.get(q.id) == loop.index0 %}checked{% endif %}>
+            <span>{{ opt }}</span>
+          </label>
+        {% endfor %}
+      </fieldset>
+    {% endfor %}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+
+  {% if score is not none %}
+    <div class="result">
+      <h3>Your Score: {{ score }}%</h3>
+      <p>Correct: {{ correct_count }} / {{ total }}</p>
+      {% if score >= 67 %}
+        <p class="success">Great job! This counts as completed training.</p>
+      {% else %}
+        <p class="warning">Keep practicing! Aim for at least 67%.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

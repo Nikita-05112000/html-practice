@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Welcome</h2>
+  <p>This lightweight tool helps your team spot phishing, learn best practices, and monitor basic security health.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Phishing Detection</h3>
+      <p>Paste an email or URL to check for suspicious indicators.</p>
+      <a class="btn" href="{{ url_for('detect') }}">Try it</a>
+    </div>
+    <div class="card">
+      <h3>Training</h3>
+      <p>Short interactive quiz to boost awareness.</p>
+      <a class="btn" href="{{ url_for('training') }}">Start</a>
+    </div>
+    <div class="card">
+      <h3>Dashboard</h3>
+      <p>See risky emails detected, training progress, and alerts.</p>
+      <a class="btn" href="{{ url_for('dashboard') }}">View</a>
+    </div>
+  </div>
+</section>
+<section class="stats">
+  <h2>Quick Stats</h2>
+  <ul class="stats-list">
+    <li><strong>Risky emails detected:</strong> {{ stats.risky_emails_detected }}</li>
+    <li><strong>URLs scanned:</strong> {{ stats.urls_scanned }}</li>
+    <li><strong>Trainings completed:</strong> {{ stats.trainings_completed }}</li>
+  </ul>
+</section>
+{% endblock %}
